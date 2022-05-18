@@ -1,4 +1,4 @@
-// DELETING THE FIRST NODE OF SINGLE LINKED LIST
+// DELETING THE LAST NODE OF SINGLE LINKED LIST
 
 #include <stdio.h>
 #include <stdlib.h>
