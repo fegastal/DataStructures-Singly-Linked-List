@@ -21,7 +21,7 @@ struct node* del_last(struct node *head)
     {
         struct node *temp = head;
         struct node *temp2 = head;
-        while(temp->link != NULL)
+        while(temp->link != NULL) // If there are n nodes in the linked list, then the loop will run n times;
         {
             temp2 = temp;
             temp = temp->link;
