@@ -1,6 +1,3 @@
-// DELETING THE NODE AT A PARTICULAR POSITION
-// https://www.youtube.com/watch?v=XgABnoJLtG4&list=PLBlnK6fEyqRj9lld8sWIUNwlKfdUoPd1Y&index=56
-
 #include <stdio.h>
 #include <stdlib.h>
 
