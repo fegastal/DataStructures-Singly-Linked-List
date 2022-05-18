@@ -8,33 +8,21 @@ struct node {
     struct node *link;
 }
 
-struct node* del_last(struct node *head)
+struct node* del_first(struct node *head)
 {
-    if(head == NULL) // Check if there is no node in the linked list
+    if(head == NULL)
         printf("List is already empty!");
-    else if(head->link == NULL) // Check if there is ONE node in the linked list
-    {
-        free(head);
-        head = NULL;
-    }
     else
     {
         struct node *temp = head;
-        struct node *temp2 = head;
-        while(temp->link != NULL)
-        {
-            temp2 = temp;
-            temp = temp->link;
-        }
-        temp2->link = NULL;
+        head = head->link;
         free(temp);
-        temp = NULL;
     }
     return head;
 }
 
 int main() {
-    head = del_last(head);
+    head = del_first(head);
     ptr = head;
     while(ptr != NULL)
     {
@@ -43,5 +31,3 @@ int main() {
     }
     return 0;
 }
-
-// Output: 45 98
