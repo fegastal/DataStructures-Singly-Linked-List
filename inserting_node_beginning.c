@@ -6,14 +6,15 @@ struct node {
     struct node *link;
 };
 
-void add_beg(struct node **head, int d)
+struct node* add_beg(struct node* head, int d)
 {
     struct node *ptr = malloc(sizeof(struct node));
     temp->data = d;
     temp->link = NULL;
 
-    ptr->link = *head;
-    *head = ptr;
+    ptr->link = head;
+    head = ptr;
+    return head;
 }
 
 int main() {
