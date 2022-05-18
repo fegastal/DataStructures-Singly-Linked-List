@@ -3,40 +3,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void add_at_pos(struct node* head, int data, int pos)
+int add_beg(int arr[], int n, int data)
 {
-    struct node *ptr = head;
-    struct node *ptr2 = malloc(sizeof(struct node));
-    ptr2->data = data;
-    ptr2->link = NULL;
-
-    pos--;
-    while(pos != 1)
+    int i;
+    for(i=n-1; i>=0; i--)
     {
-        ptr = ptr->link;
-        pos--;
+        arr[i+1] = arr[i];
     }
-    ptr2->link = ptr->link;
-    ptr->link = ptr2;
+    arr[0] = data;
+    return n+1; // Considering that the array is NOT full
 }
-
 int main() {
-    struc node *head = malloc(sizeof(struct node));
-    head->data = 45;
-    head->link = NULL;
+    int arr[10], data = 10, i, n;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+    printf("Enter the elements: ");
+    for(i=0; i<n; i++)
+        scanf("%d", &arr[i]);
+    
+    n = add_beg(arr, n, data);
 
-    add_at_end(head, 98);
-    add_at_end(head, 3);
-
-    int data = 67, position = 3;
-
-    add_at_pos(head, data, position);
-    struct node *ptr = head;
-
-    while (ptr != NULL)
-    {
-        printf("%d", ptr->data);
-        ptr = ptr->link;
-    }
+    for(i=0; i<n; i++)
+        printf("%d", arr[i]);
     return 0;
 }
