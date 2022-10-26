@@ -11,10 +11,24 @@ typedef struct node
     struct node *next;
 } Node;
 
+typedef struct
+{
+    Node *beginning;
+    int size;
+} List;
+
+// this procedure we'll use when we create 
+// our list structure in our main
+void create_list(List *list)
+{
+    list->beginning = NULL;
+    list->size= 0;
+}
+
 /* 
     First procedure: insert at the middle;
     as it is a procedure, returns void.
-    
+
     As parameters, we get an element of type 
     node which will be our list, but we get 
     a pointer to pointer, because we'll have 
@@ -36,9 +50,9 @@ typedef struct node
     the occurrence of this element here".
 */
 
-void insert_in_the_middle(Node **list, int num, int ant)
+void insert_in_the_middle(Node *list, int num, int ant)
 {
-    Node  *new = malloc(sizeof(Node));
+    Node  *aux, *new = malloc(sizeof(Node));
 
     // if this new node is allocated correctly
     if(new)
@@ -52,10 +66,10 @@ void insert_in_the_middle(Node **list, int num, int ant)
         // be the first in our queue. so we need
         // to check if the queue is empty...
         // is the first? the list is empty?
-        if(*list == NULL){
+        if(list->beginning == NULL){
             new->next = NULL;
-            // o inicio dessa nossa lista será um novo nó
-            *list = new;
+            // the beginning of this list will be a new node
+            list->beginning = new;
         }
         // the list is not empty? has at least 1 node?
         else {
@@ -66,7 +80,7 @@ void insert_in_the_middle(Node **list, int num, int ant)
         // this pointer when we insert the first node!
         // then we can't change the contents of that variable 
         // so we create an auxiliary variable
-            aux = *list;
+            aux = list->beginning;
             // we now get the address of our first node in the list
             // now we'll scan and scroll the list until we find ant
 
@@ -87,6 +101,7 @@ void insert_in_the_middle(Node **list, int num, int ant)
             // this way, I link my new node to the end of the list
             aux->next = new;
         }
+        list->size++;
     }
     else
     {

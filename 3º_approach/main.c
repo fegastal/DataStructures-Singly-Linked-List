@@ -11,17 +11,26 @@ typedef struct node
     struct node *next;
 } Node;
 
-// procedure for printing the linked list:
-void print(Node *node)
+// procedure to print the linked list:
+// we'll do a copy, so you don't need the pointer
+void print(List list)
 {
-    printf("\n\tLista: ");
+    Node *node = list.beginning;
+    // when we are accessing a pointer, we use the ->
+    // but list is now no longer a pointer, we are 
+    // getting the list element that comes from main
+    // so list.start I have an element
+    // a copy of the list, so it's dot!
+    // struct element - use dot
+    // pointer element - use ->
+    printf("\n\tList size %d: ", list.tam);
     // as long as the node is other than null
     while(node)
     {
         printf("%d", node->value);
         // we need to go through this list, 
         // otherwise we'll be in this infinite loop
-        node = Node->next;
+        node = node->next;
         // at some point, this next node will be null
         // then the repeat will be broken
     }
@@ -32,15 +41,18 @@ void print(Node *node)
 
 // In main, we'll build it in parts
 // we'll have a "do while" loop
-
 int main()
 {
     int option, value, ant;
 
-    // at first, our list is empty!
-    Node *list = NULL;
+    // at the beginning, our list is empty!
+    // create a variable of type list, called list:
 
-    // I will give the zero option as the output option
+    List list;
+
+    // call the create list procedure:
+    criar_lista(&lista);
+
     do 
     {
         // printing a menu for this user

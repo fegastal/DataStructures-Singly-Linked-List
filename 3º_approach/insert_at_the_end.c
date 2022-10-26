@@ -11,6 +11,20 @@ typedef struct node
     struct node *next;
 } Node;
 
+typedef struct
+{
+    Node *beginning;
+    int size;
+} List;
+
+// this procedure we'll use when we create 
+// our list structure in our main
+void create_list(List *list)
+{
+    list->beginning = NULL;
+    list->size = 0;
+}
+
 /* 
     First procedure: insert at the end;
     as it is a procedure, returns void.
@@ -30,7 +44,7 @@ typedef struct node
     That is why it is **.
 */
 
-void insert_at_the_end(Node **list, int num)
+void insert_at_the_end(List *list, int num)
 {
     Node *aux, *new = malloc(sizeof(Node));
 
@@ -48,9 +62,9 @@ void insert_at_the_end(Node **list, int num)
         // be the first in our queue. so we need
         // to check if the queue is empty...
         // is the first? the list is empty?
-        if(*list == NULL)
+        if(list->beginning == NULL)
             // the content will be the new node
-            *list = new;
+            list->beginning = new;
         // the list is not empty? has at least 1 node?
         else {
             // we'll need a loop to go through all the nodes
@@ -63,18 +77,17 @@ void insert_at_the_end(Node **list, int num)
             // and we'll lose the whole previous part of our list.
 
             // How do we solve this? By creating an auxiliary pointer *aux
-            aux = *list;
+            aux = list->beginning;
+            // we are creating an auxiliary pointer to the beginning of our list 
             while(aux->next)
             // as long as there is a next one, aux will walk through the list
                 aux = aux->next;
             aux->next = new;
         }
-
+        list->size++;
     }
-    else if
-    {
+    else
         printf("Memory allocation error!\n");
-    }
 }
 
 int main()
